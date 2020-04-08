@@ -1,0 +1,44 @@
+package CuentaBancaria;
+
+public class CuentaBancaria {
+	public String getTitular() {
+		return titular;
+	}
+	public void setTitular(String titular) {
+		if(titular.length()>=minTitular && titular.length()<maxTitular)
+		{
+		this.titular = titular;
+		}
+		else throw new illeglArgumentException();
+	}
+	public double getSaldo() {
+		return saldo;
+	}
+	public String getEntidad() {
+		return entidad;
+	}
+	public String getOficina() {
+		return oficina;
+	}
+	public String getNumCuenta() {
+		return numCuenta;
+	}
+	private double saldo;
+	private String titular;
+	private String entidad;
+	private String oficina;
+	private String numCuenta;
+	static public int minTitular;
+	static public int maxTitular;
+	public CuentaBancaria(String titular, String entidad, String oficina, String DC, String numCuenta)
+	{
+		this.titular=titular;
+		this.entidad=entidad;
+		this.oficina=oficina;
+		this.titular=DC;
+	}
+	public CuentaBancaria(String titular, String CCC)
+	{
+		
+	}
+}

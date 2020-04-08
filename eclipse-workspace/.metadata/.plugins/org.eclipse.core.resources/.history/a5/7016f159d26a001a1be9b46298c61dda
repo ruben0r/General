@@ -1,0 +1,78 @@
+package CuentaBancaria;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) 
+	{
+		Menu();
+	}
+	public static void Menu()
+	{
+		int op=Integer.parseInt(JOptionPane.showInputDialog("\"1. Ver el número de cuenta completo (CCC– Código Cuenta Cliente).\",\n" + 
+				"				\"2. Ver el titular de la cuenta.\",\n" + 
+				"				\"3. Ver el código de la entidad.\",\n" + 
+				"				\"4. Ver el código de la oficina.\",\n" + 
+				"				\"5. Ver el número de la cuenta (solamente el número de cuenta).\",\n" + 
+				"				\"6. Ver los dígitos de control de la cuenta.\",\n" + 
+				"				\"7. Realizar un ingreso. Habrá que solicitar por teclado la cantidad que se desea ingresar.\",\n" + 
+				"				\"8. Retirar efectivo. Habrá que solicitar por teclado la cantidad que se desea retirar.\",\n" + 
+				"				\"9. Consultar saldo.\",\n" + 
+				"				\"10.Salir de la aplicación.\""));
+		switch (op)
+		{
+			case 0:
+			{
+				
+			}
+			break;
+			case 1:
+			{
+				
+			}
+			break;
+			case 2:
+			{
+				
+			}
+			break;
+			case 3:
+			{
+				
+			}
+			break;
+			case 4:
+			{
+				
+			}
+			break;
+			case 5:
+			{
+				
+			}
+			break;
+			case 6:
+			{
+				
+			}
+			break;
+			case 7:
+			{
+				
+			}
+			break;
+			case 8:
+			{
+				
+			}
+			break;
+			case 9:
+			{
+				
+			}
+			break;
+			
+		}
+	}
+}

@@ -1,0 +1,27 @@
+package Notas;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+	static Notas n=new Notas();
+	public static void main(String[] args) throws NotaIncorrecta, NotaFinal {
+		try {
+		n.Introducir();
+		}
+		catch(NotaIncorrecta exc)
+		{
+			JOptionPane.showMessageDialog(null, exc.toString());
+			main(args);
+		}
+		catch(NotaFinal exc)
+		{
+			JOptionPane.showMessageDialog(null, exc.toString());main(args);
+			JOptionPane.showMessageDialog(null, n.toString());
+		}
+		finally 
+		{
+			System.exit(1);
+		}
+	}
+
+}

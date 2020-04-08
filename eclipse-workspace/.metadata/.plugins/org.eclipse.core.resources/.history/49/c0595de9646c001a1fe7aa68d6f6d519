@@ -1,0 +1,71 @@
+package Biblioteca;
+
+import java.util.Arrays;
+
+import javax.swing.JOptionPane;
+
+public class Biblioteca {
+	public static Libro lib[];
+	public static int tam =1;
+	public static void main(String[] args) throws IllegalArgumentException 
+	{
+		lib=new Libro[tam];
+		Menu();
+	}
+	public static void Menu()
+	{
+		String options[]= {"Crear libro","Ver libro","Salir"};
+		int op=JOptionPane.showOptionDialog(null, "¿Que desea hacer?", "Menu Biblioteca", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+		switch(op)
+		{
+			case 0:
+			{
+				lib=Arrays.copyOf(lib, tam);
+				for (int i=0;i<lib.length;i++)
+				{
+					if (lib[i]==null)
+					{
+						lib[i]=new Libro(JOptionPane.showInputDialog("Introduzca el titulo"),JOptionPane.showInputDialog("Introduzca el autor"));
+						try
+						{
+						String isbn=JOptionPane.showInputDialog("Introduzca el ISBN del libro");
+						if(isbn!=null) lib[i].cambiaISBN(isbn);
+						else throw new IllegalArgumentException();Menu();
+						}
+						catch(IllegalArgumentException exc) {System.out.println(exc.toString()); Menu();};
+						tam++;
+					}
+				}
+			}
+			break;
+			case 1:
+			{
+				String ISBN=JOptionPane.showInputDialog("Introduzca el ISBN del libro a buscar");
+				int cont=0;
+				for(int i=0;i<lib.length;i++)
+				{
+					if(lib[i]!=null)
+					{
+						if(lib[i].consultaISBN().contentEquals(ISBN))
+						{
+							JOptionPane.showMessageDialog(null, (lib[i].toString()));
+							i=lib.length;
+						}
+						else cont++;
+					}
+					else if(cont==lib.length-1)
+					{
+						System.out.println("No se ha encontrado ningun libro con ese ISBN");
+					}
+				}
+			}
+			break;
+			case 2:
+			{
+				System.exit(1);
+			}
+			break;
+		}
+		Menu();
+	}
+}

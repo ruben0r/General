@@ -1,0 +1,17 @@
+package Fraccion;
+
+public class Fraccion {
+	private int num;
+	private int den;
+	public Fraccion() {
+		this.num=1;
+		this.den=1;
+	}
+	public Fraccion(int num,int den) {
+		this.num=num;
+		this.den=den;
+	}
+	public String toString() {
+		return "  " +num + "\n"+"----- \n" +"  "+ den;
+	}
+}

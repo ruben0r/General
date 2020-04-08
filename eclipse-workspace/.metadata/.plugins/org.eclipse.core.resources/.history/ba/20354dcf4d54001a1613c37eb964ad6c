@@ -1,0 +1,29 @@
+package Fraccion;
+
+public class Fraccion {
+	private static int num;
+	private static int den;
+	public static int getNum() {
+		return num;
+	}
+	public static void setNum(int num) {
+		Fraccion.num = num;
+	}
+	public static int getDen() {
+		return den;
+	}
+	public static void setDen(int den) {
+		Fraccion.den = den;
+	}
+	public Fraccion() {
+		this.num=1;
+		this.den=1;
+	}
+	public Fraccion(int num,int den) {
+		this.num=num;
+		this.den=den;
+	}
+	public String toString() {
+		return "  " +num + "\n"+"----- \n" +"  "+ den;
+	}
+}

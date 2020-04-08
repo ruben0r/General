@@ -1,0 +1,37 @@
+package CuentaBancaria;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+
+	public static void main(String[] args) 
+	{
+		Menu();
+	}
+	public static void Menu()
+	{
+		String options[]= {"1. Ver el número de cuenta completo (CCC– Código Cuenta Cliente).",
+				"2. Ver el titular de la cuenta.",
+				"3. Ver el código de la entidad.",
+				"4. Ver el código de la oficina.",
+				"5. Ver el número de la cuenta (solamente el número de cuenta).",
+				"6. Ver los dígitos de control de la cuenta.",
+				"7. Realizar un ingreso. Habrá que solicitar por teclado la cantidad que se desea ingresar.",
+				"8. Retirar efectivo. Habrá que solicitar por teclado la cantidad que se desea retirar.",
+				"9. Consultar saldo.",
+				"10.Salir de la aplicación."};
+		JOptionPane.showInputDialog("\"1. Ver el número de cuenta completo (CCC– Código Cuenta Cliente).\",\n" + 
+				"				\"2. Ver el titular de la cuenta.\",\n" + 
+				"				\"3. Ver el código de la entidad.\",\n" + 
+				"				\"4. Ver el código de la oficina.\",\n" + 
+				"				\"5. Ver el número de la cuenta (solamente el número de cuenta).\",\n" + 
+				"				\"6. Ver los dígitos de control de la cuenta.\",\n" + 
+				"				\"7. Realizar un ingreso. Habrá que solicitar por teclado la cantidad que se desea ingresar.\",\n" + 
+				"				\"8. Retirar efectivo. Habrá que solicitar por teclado la cantidad que se desea retirar.\",\n" + 
+				"				\"9. Consultar saldo.\",\n" + 
+				"				\"10.Salir de la aplicación.\"");
+		System.out.println();
+		System.out.println(JOptionPane.showInternalOptionDialog(null,  "Que desea hacer", "Menu principal", JOptionPane.DEFAULT_OPTION, 0, null, options, null));
+		JOptionPane.showOptionDialog(null,  "Que desea hacer", "Menu principal", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+	}
+}

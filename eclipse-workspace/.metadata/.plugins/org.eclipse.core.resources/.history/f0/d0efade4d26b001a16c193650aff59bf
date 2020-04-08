@@ -1,0 +1,166 @@
+package CuentaBancaria;
+
+import java.util.Arrays;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+	public static CuentaBancaria c[];
+	public static int tam;
+	public static void main(String[] args) throws IllegalArgumentException 
+	{
+		tam=1;
+		c=new CuentaBancaria[tam];
+		try
+		/**Coge la excepción del menu general en el caso de que el usuario a la hora de introducir los datos meta mas o menos de los numeros indicados
+		 * 
+		 */
+		{
+		MenuGeneral();
+		}
+		catch(IllegalArgumentException exc) {JOptionPane.showMessageDialog(null, exc.toString());MenuGeneral();}
+	}
+	public static void MenuGeneral() throws IllegalArgumentException 
+	{
+		
+		String[] options= {"Registrar cuenta", "Acceder a cuenta","Salir"};
+		int opc=JOptionPane.showOptionDialog(null, "¿Que desea hacer?", "Menu general", JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE, null, options, null);
+		switch (opc)
+		{
+			case 0:
+			{
+				if(tam==1)
+				{
+					String entidad=JOptionPane.showInputDialog("Introduzca los cuatro números de la entidad (4 numeros)");
+					String oficina=JOptionPane.showInputDialog("Introduzca los cuatro números de la oficina (4 numeros)");
+					String numCuenta=JOptionPane.showInputDialog("Introduzca los 10 números de la cuenta personal (10 numeros)");
+					if(entidad.length()==4 && oficina.length()==4 && numCuenta.length()==10) 
+					{
+						c[(tam-1)]=new CuentaBancaria(JOptionPane.showInputDialog(null, "Introduzca el titular"),entidad,oficina,null,numCuenta);
+						tam++;
+					}
+					else throw new IllegalArgumentException();
+					
+				}
+				else
+				{
+					c=Arrays.copyOf(c, tam);
+					c[(tam-1)]=new CuentaBancaria();
+					String entidad=JOptionPane.showInputDialog("Introduzca los cuatro números de la entidad  (4 numeros)");
+					String oficina=JOptionPane.showInputDialog("Introduzca los cuatro números de la oficina  (4 numeros)");
+					String numCuenta=JOptionPane.showInputDialog("Introduzca los 10 números de la cuenta personal (10 numeros)");
+					if(entidad.length()==4 && oficina.length()==4 && numCuenta.length()==10) 
+					{
+						c[(tam-1)]=new CuentaBancaria(JOptionPane.showInputDialog(null, "Introduzca el titular"),entidad,oficina,null,numCuenta);
+						c[(tam-1)].setEntidad(entidad);
+						c[(tam-1)].setOficina(oficina);
+						c[(tam-1)].setNumCuenta(numCuenta);
+						tam++;
+					}
+					else throw new IllegalArgumentException();
+					
+				}
+			}
+			break;
+			case 1:
+			{
+				for(int i=0;i<tam;i++) 
+				{
+					if(c[i].getNumCuenta().contentEquals(JOptionPane.showInputDialog("Introduzca el numero de su cuenta (10 numeros) ")))
+					{
+						Menu(i);
+						i=tam;
+					}
+				}
+			}
+			break;
+			case 2:
+			{
+				System.exit(1);
+			}
+			break;
+		}
+		MenuGeneral();
+	}
+	public static void Menu(int aux) throws IllegalArgumentException
+	{
+		int op=Integer.parseInt(JOptionPane.showInputDialog("\"1. Ver el número de cuenta completo (CCC– Código Cuenta Cliente).\",\n" + 
+				"				\"2. Ver el titular de la cuenta.\",\n" + 
+				"				\"3. Ver el código de la entidad.\",\n" + 
+				"				\"4. Ver el código de la oficina.\",\n" + 
+				"				\"5. Ver el número de la cuenta (solamente el número de cuenta).\",\n" + 
+				"				\"6. Ver los dígitos de control de la cuenta.\",\n" + 
+				"				\"7. Realizar un ingreso. Habrá que solicitar por teclado la cantidad que se desea ingresar.\",\n" + 
+				"				\"8. Retirar efectivo. Habrá que solicitar por teclado la cantidad que se desea retirar.\",\n" + 
+				"				\"9. Consultar saldo.\",\n" +
+				"				\"10. Volver al menu principal.\",\n" +
+				"				\"11.Salir de la aplicación.\""));
+		switch (op)
+		{
+			case 1:
+			{
+				JOptionPane.showMessageDialog(null, c[aux].toString());
+			}
+			break;
+			case 2:
+			{
+				JOptionPane.showMessageDialog(null, c[aux].getTitular());
+			}
+			break;
+			case 3:
+			{
+				JOptionPane.showMessageDialog(null, c[aux].getEntidad());
+			}
+			break;
+			case 4:
+			{
+				JOptionPane.showMessageDialog(null, c[aux].getOficina());
+			}
+			break;
+			case 5:
+			{
+				JOptionPane.showMessageDialog(null, c[aux].getNumCuenta());
+			}
+			break;
+			case 6:
+			{
+				JOptionPane.showMessageDialog(null, c[aux].obtenerDigitosControl(c[aux].getEntidad(), c[aux].getOficina(), c[aux].getNumCuenta()));
+			}
+			break;
+			case 7:
+			{
+				try
+				{
+				c[aux].ingresar(Double.parseDouble(JOptionPane.showInputDialog("Introduzca la cantidad de dinero a ingresar, tiene actualmente: " +c[aux].getSaldo()+" Euros.")));
+				}
+				catch(IllegalArgumentException exc) {JOptionPane.showMessageDialog(null, exc.toString());Menu(aux);}
+			}
+			break;
+			case 8:
+			{
+				try
+				{
+					c[aux].retirar(Double.parseDouble(JOptionPane.showInputDialog("Introduzca la cantidad de dinero a ingresar, tiene actualmente: "+c[aux].getSaldo()+" Euros.")));
+				}
+				catch(IllegalArgumentException exc) {JOptionPane.showMessageDialog(null, exc.toString());Menu(aux);}
+			}
+			break;
+			case 9:
+			{
+				JOptionPane.showMessageDialog(null, c[aux].getSaldo()+" Euros.");
+			}
+			break;
+			case 10:
+			{
+				MenuGeneral();
+			}
+			break;
+			case 11:
+			{
+				System.exit(1);
+			}
+			break;
+		}
+		Menu(aux);
+	}
+}

@@ -1,0 +1,64 @@
+package Animales;
+
+import javax.swing.JOptionPane;
+
+public class MainAnimal {
+	static Animal an[]=new Animal[20];
+	static Perro pe[]=new Perro[10];
+	static Gato ga[]=new Gato[10];
+	public static void Introducir() {
+		String[] opciones= {"Perro","Gato"};
+		for (int i=0;i<an.length;i++) {
+			if(an[i]==null) {
+				int op=JOptionPane.showOptionDialog(null, "¿Desea crear un perro o un gato?", "Menú Creación", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, null);
+				if(op==0) {
+				pe[i]=new Perro();
+				pe[i].setNombre(JOptionPane.showInputDialog("Introduzca el nombre del animal"));
+				pe[i].setEdad(Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del animal")));
+				pe[i].setRaza(JOptionPane.showInputDialog("Introduzca la raza de perro"));
+				}
+				else {
+					ga[i]=new Gato();
+					ga[i].setNombre(JOptionPane.showInputDialog("Introduzca el nombre del animal"));
+					ga[i].setEdad(Integer.parseInt(JOptionPane.showInputDialog("Introduzca la edad del animal")));
+					ga[i].setVidas(Integer.parseInt(JOptionPane.showInputDialog("Introduzca las vidas del gato")));
+				}
+				i=an.length;
+			}
+		}
+	}
+	public static void main(String[] args) {
+		Menu();
+	}
+	public static void Menu() {
+		String opciones[]= {"Crear animal","Ver animal","Salir"};
+		int opcion=JOptionPane.showOptionDialog(null, "¿Qúe desea hacer?", "Menú Animales", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, null);
+		switch(opcion) {
+		case 0:{
+			Introducir();
+		}
+		Menu();
+		break;
+		case 1:{
+			String[] opcione= {"Perro","Gato"};
+			int op=JOptionPane.showOptionDialog(null, "¿Tiene un perro o un gato?", "Menú Creación", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opcione, null);
+			String opc=JOptionPane.showInputDialog("Qué animal desea ver (nombre)");
+			if(op==0) {
+			for (int i=0;i<an.length;i++) {
+				if(pe[i].getNombre().contentEquals(opc)) {
+					pe[i].toString();
+				}
+			}
+			}
+			else {
+				for (int i=0;i<an.length;i++) {
+					if(ga[i].getNombre().contentEquals(opc)) {
+						ga[i].toString();
+					}
+				}
+			}
+		}
+		break;
+		}
+	}
+}

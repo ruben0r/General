@@ -1,0 +1,102 @@
+package CalculadoraEvolution;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+	public static void main(String[] args)
+	{
+		Menu();
+	}
+	public static void Menu()
+	{
+		Operaciones o=new Operaciones();
+		String opciones[]= {"Operaciones basicas","Operaciones complejas","Salir"};
+		int opc=JOptionPane.showOptionDialog(null, "¿Qué desea hacer?", "Menu operaciones", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, opciones, null);
+		switch(opc)
+		{
+			case 0:
+			{
+				String options[]= {"Sumar","Restar","Multiplicar","Dividir"};
+				int op=JOptionPane.showOptionDialog(null, "¿Que operacion basica desea hacer?", "Menu operaciones basicas", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+				switch(op)
+				{
+					case 0:
+					{
+						try
+						{
+						o.Introducir('+');
+						}
+						catch(InputCancelado exc) {JOptionPane.showMessageDialog(null, exc.toString());}
+					}
+					break;
+					case 1:
+					{
+						try
+						{
+						o.Introducir('-');
+						}
+						catch(InputCancelado exc) {JOptionPane.showMessageDialog(null, exc.toString());}
+					}
+					break;
+					case 2:
+					{	
+						try
+						{
+						o.Introducir('*');
+						}
+						catch(InputCancelado exc) {JOptionPane.showMessageDialog(null, exc.toString());}
+					}
+					break;
+					case 3:
+					{
+						try
+						{
+						o.Introducir('/');
+						}
+						catch(InputCancelado exc) {JOptionPane.showMessageDialog(null, exc.toString());}
+					}
+					break;
+				}
+			}
+			break;
+			case 1:
+			{
+				String options[]= {"Elevar un numero a un exponente","Raiz cuadrada"};
+				int op=JOptionPane.showOptionDialog(null, "¿Que operacion basica desea hacer?", "Menu operaciones basicas", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, null);
+				switch(op)
+				{
+					case 0:
+					{
+						try
+						{
+						o.Introducir('p');
+						}
+						catch(InputCancelado exc) {JOptionPane.showMessageDialog(null, exc.toString());}
+					}
+					break;
+					case 1:
+					{
+						try 
+						{
+							try
+							{
+							o.Raiz();
+							}
+							catch(InputCancelado exc) {JOptionPane.showMessageDialog(null, exc.toString());}
+						}
+						catch(NumeroNoValido exc){JOptionPane.showMessageDialog(null, exc.toString());Menu();};
+					}
+					break;
+				}
+			}
+			break;
+			case 2:
+			{
+				System.exit(1);
+			}
+			break;
+		}
+		Menu();
+	}
+}
+

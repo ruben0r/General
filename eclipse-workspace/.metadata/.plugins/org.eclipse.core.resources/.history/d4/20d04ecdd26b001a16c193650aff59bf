@@ -1,0 +1,8 @@
+package CuentaBancaria;
+
+public class IllegalArgumentException extends Exception{
+	public IllegalArgumentException()
+	{
+		super("El código de la cuenta no es válido");
+	}
+}

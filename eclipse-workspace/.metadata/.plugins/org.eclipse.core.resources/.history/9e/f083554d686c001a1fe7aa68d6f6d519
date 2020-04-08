@@ -1,0 +1,47 @@
+package Notas;
+
+import javax.swing.JOptionPane;
+
+public class Main {
+	static Notas n=new Notas();
+	public static void main(String[] args) throws NotaIncorrecta, NotaFinal {
+		try {
+		n.Introducir();
+		}
+		catch(NotaIncorrecta exc)
+		{
+			JOptionPane.showMessageDialog(null, exc.toString());
+			main(args);
+		}
+		catch(NotaFinal exc)
+		{
+			JOptionPane.showMessageDialog(null, exc.toString());
+			JOptionPane.showMessageDialog(null, n.toString());
+		}
+		finally 
+		{
+			String[] options= {"Seguir introduciendo","Crear nueva lista de notas","Salir"};
+			int op=JOptionPane.showOptionDialog(null,"Desea volver a introducir mas notas o salir","Salir o no.",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE,null,options,null);
+			switch(op)
+			{ 
+			case 0:
+			{
+				main(args);
+			}
+			break;
+			case 1:
+			{ 
+				n=new Notas();
+				main(args);
+			}
+			break;
+			case 2:
+			{
+				System.exit(1);
+			}
+			break;
+			}
+		}
+	}
+
+}

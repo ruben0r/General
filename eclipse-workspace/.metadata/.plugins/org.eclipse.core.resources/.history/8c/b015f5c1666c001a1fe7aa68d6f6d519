@@ -1,0 +1,67 @@
+package CalculadoraEvolution;
+
+import javax.swing.JOptionPane;
+
+public class Operaciones {
+	private double op1;
+	private double op2;
+	public Operaciones()
+	{
+		op1=0;
+		op2=0;
+	}
+	public Operaciones(double op1, double op2)
+	{
+		this.op1=op1;
+		this.op2=op2;
+	}
+	public void Introducir(char operando)
+	{
+		op1=Double.parseDouble(JOptionPane.showInputDialog("Introduzca el primer operando"));
+		op2=Double.parseDouble(JOptionPane.showInputDialog("Introduzca el segundo operando"));
+		if(op1!=null && op2!=null)
+		switch (operando)
+		{
+		case '+':
+		{
+			Suma s=new Suma(op1,op2);
+			JOptionPane.showMessageDialog(null, s.toString());
+		}
+		break;
+		case '-':
+		{
+			Resta r=new Resta(op1,op2);
+			JOptionPane.showMessageDialog(null, r.toString());
+		}
+		break;
+		case '*':
+		{
+			Multiplicar m=new Multiplicar(op1,op2);
+			JOptionPane.showMessageDialog(null, m.toString());
+		}
+		break;
+		case '/':
+		{
+			Dividir d=new Dividir(op1,op2);
+			JOptionPane.showMessageDialog(null, d.toString());
+		}
+		break;
+		case 'p':
+		{
+			Potencias p=new Potencias(op1, op2);
+			JOptionPane.showMessageDialog(null, p.toString());
+		}
+		break;
+		}
+	}
+	public void Raiz() throws NumeroNoValido
+	{
+		op1=Double.parseDouble(JOptionPane.showInputDialog("Introduzca el número al que quieras hacer la raíz cuadrada"));
+		if(op1>=0)
+		{
+			Raiz r=new Raiz(op1,0d);
+			JOptionPane.showMessageDialog(null, r.toString());
+		}
+		else throw new NumeroNoValido();
+	}
+}

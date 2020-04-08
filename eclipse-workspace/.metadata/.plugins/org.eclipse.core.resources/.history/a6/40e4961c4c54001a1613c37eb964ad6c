@@ -1,0 +1,11 @@
+package Fraccion;
+
+import javax.swing.JOptionPane;
+
+public class MainFraccion {
+	static Fraccion f=new Fraccion();
+	public static void main(String[] args) {
+		JOptionPane.showMessageDialog(null,f.toString() );
+	}
+
+}

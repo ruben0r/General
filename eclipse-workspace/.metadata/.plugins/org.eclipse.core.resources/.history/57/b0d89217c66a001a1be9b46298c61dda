@@ -1,0 +1,16 @@
+package CuentaBancaria;
+
+public class CuentaBancaria {
+	private double saldo;
+	private String titular;
+	private int entidad;
+	private int oficina;
+	private int numCuenta;
+	static public int minTitular;
+	static public int maxTitular;
+	public CuentaBancaria(String titular, String entidad, String oficina, String DC, String numCuenta)
+	{
+		this.titular=titular;
+		this.titular=titular;
+	}
+}

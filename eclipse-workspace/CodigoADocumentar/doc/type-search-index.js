@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ejercicioAlumno","l":"Alumno"},{"p":"ejercicioCuadrado","l":"Cuadrado"},{"p":"ejercicioDesarrollaClase","l":"Empleado"},{"p":"ejercicioDesarrollaFigura","l":"Figura"}]
